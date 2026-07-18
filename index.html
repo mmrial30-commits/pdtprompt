@@ -168,68 +168,115 @@ details>summary{position:relative;padding-right:42px}details>summary::after{cont
 <figcaption>실제 입력 예시: 기존 팔찌의 구도와 펜던트 위치는 유지하고 원석만 교체합니다.</figcaption>
 </figure></details>
 <div class="prompt-wrap">
-<textarea class="prompt prompt-focus" id="productCommon" readonly="">IMAGE EDITING TASK — NOT IMAGE GENERATION.
+<textarea class="prompt prompt-focus" id="productCommon" readonly="">IMAGE EDITING TASK — STRICT MATERIAL REPLACEMENT ONLY.
+THIS IS NOT A NEW IMAGE GENERATION TASK.
 
-REFERENCE PRIORITY — ABSOLUTE:
-- Reference image 1 is the MASTER GEOMETRY and MASTER COMPOSITION.
-- Reference image 2 is used ONLY as the gemstone material/color/texture source.
-- If the two references conflict in any way, Reference image 1 always wins.
+ABSOLUTE REFERENCE HIERARCHY:
+- Reference image 1 is the ONLY source for geometry, composition, scale, object placement, bead count, bead diameter, silhouette, camera, crop, pendant, and lighting layout.
+- Reference image 2 is ONLY a flat gemstone material swatch: color, translucency/opacity, internal inclusions, mineral pattern, and polish.
+- IGNORE ALL geometry visible in Reference image 2, including its bead size, bead shape, bead count, strand curvature, spacing, crop, perspective, lighting, and magnification.
+- Never average, blend, interpolate, or compromise between the two references. Reference image 1 always wins for every spatial property.
 
-GEOMETRY LOCK — ABSOLUTE REQUIREMENT:
-Do not redesign, recreate, reinterpret, rebuild, beautify, optimize, or regenerate the bracelet.
-Treat Reference image 1 as a fixed template and preserve it exactly.
+EDITING METHOD — MASKED IN-PLACE REPLACEMENT:
+Treat Reference image 1 as the finished master photograph.
+Create an exact mask from the visible gemstone bead pixels in Reference image 1.
+Edit ONLY the interior pixels of those existing bead masks.
+Do not alter the mask boundaries.
+Do not redraw the bracelet.
+Do not generate replacement beads.
+Do not reconstruct the strand.
+Do not resample, enlarge, shrink, warp, smooth, normalize, or re-space any bead.
+Imagine Photoshop with every layer locked except the gemstone material inside each existing bead silhouette.
 
-LOCK ALL OF THE FOLLOWING TO REFERENCE IMAGE 1:
+ZERO-TOLERANCE GEOMETRY LOCK:
+The following values must be pixel-aligned with Reference image 1 and may not change by even one bead or by any visible amount:
 - exact total bead count
-- exact bead diameter and apparent bead size
-- exact bead-to-bead spacing and contact points
-- exact position of every individual bead
-- exact bracelet outline and ellipse ratio
-- exact curvature and overall circumference
-- exact width and height of the bracelet in the frame
-- exact camera angle, perspective, crop, framing, zoom, and object scale
-- exact pendant size, shape, position, orientation, jump-ring position, and 6 o'clock alignment
-- exact empty space inside and around the bracelet
-- exact lighting direction and highlight placement as much as possible
+- exact diameter of every individual bead
+- exact apparent bead size in pixels
+- exact silhouette and circular edge of every bead
+- exact center coordinate of every bead
+- exact bead-to-bead contact point
+- exact spacing, overlap, and occlusion between neighboring beads
+- exact front-row and rear-row layering
+- exact bracelet circumference
+- exact outer contour and inner contour
+- exact ellipse width-to-height ratio
+- exact curvature at every point around the strand
+- exact left/right symmetry or intentional asymmetry
+- exact bracelet width and height in the canvas
+- exact object scale relative to the canvas
+- exact empty space inside the bracelet
+- exact margins above, below, left, and right
+- exact camera angle, perspective, focal length appearance, crop, framing, and zoom
+- exact pendant dimensions, silhouette, thickness, orientation, engraving placement, and metal finish
+- exact jump-ring dimensions, position, attachment point, and 6 o'clock alignment
+- exact pendant-to-bead distance
+- exact background boundary and canvas dimensions
 
-THE ONLY PERMITTED CHANGE:
-Replace only the gemstone material inside the existing bead shapes with the gemstone appearance from Reference image 2.
-This is a material/texture replacement only — like applying a new material layer to the already existing beads.
+BEAD SIZE PROTECTION — CRITICAL:
+- The output beads must NOT become larger, fuller, puffier, rounder, more inflated, or more prominent.
+- The output beads must NOT become smaller or thinner.
+- Do not infer bead diameter from Reference image 2.
+- Do not use the apparent scale of the gemstone sample in Reference image 2.
+- Preserve each bead's original pixel width and pixel height from Reference image 1.
+- Preserve the same number of beads visible along the top arc, side arcs, and bottom arc.
+- Preserve the same amount of white space between the inner edge of the bracelet and the pendant.
 
-DO NOT:
-- add or remove beads
-- make beads larger or smaller
-- change bead roundness
-- change the bracelet from one ellipse ratio to another
-- tighten or loosen the bracelet
-- alter the pendant or jump ring
-- recenter, zoom in, zoom out, rotate, stretch, or reposition the bracelet
-- create a cleaner or more symmetrical new version
-- use macro framing
-- generate a similar bracelet from scratch
+ONLY PERMITTED CHANGE:
+Inside each already-existing bead silhouette from Reference image 1, replace only the gemstone appearance using Reference image 2:
+- gemstone hue and saturation
+- opacity or translucency
+- internal mineral inclusions and veining
+- internal light scattering
+- polished surface character
+Apply these properties at the existing scale of each bead. Do not scale the source texture in a way that changes perceived bead size.
 
-BEAD SURFACE:
-- Keep each bead perfectly spherical with the exact silhouette from Reference image 1.
-- Apply the color, transparency, inclusions, internal pattern, and polish from Reference image 2 only.
-- Smooth polished surface, no cracks unless visibly present in Reference image 2.
-- Natural single soft catchlight per bead; no plastic bubble appearance.
+PRESERVE FROM REFERENCE IMAGE 1:
+- original bead highlights and highlight size as closely as possible
+- original shadow footprint and contact shadow
+- original depth cues and perspective
+- original pendant and jump ring without redesign
+- official DELIXIR logo and engraving exactly as shown; do not redraw, restyle, substitute, simplify, or invent the symbol or lettering
+
+PROHIBITED ACTIONS:
+- no new bracelet
+- no similar bracelet recreation
+- no beautification
+- no symmetry correction
+- no cleaner arrangement
+- no bead-count correction
+- no larger luxury-looking beads
+- no thicker strand
+- no tighter or looser ellipse
+- no altered pendant scale
+- no recentering
+- no automatic reframing
+- no zooming in or out
+- no rotation
+- no perspective correction
+- no macro reinterpretation
+- no cropping change
+- no added or removed shadows
+- no geometry copied from Reference image 2
 
 BACKGROUND — ABSOLUTE REQUIREMENT:
 - Pure solid white only, exact RGB 255,255,255 / HEX #FFFFFF.
-- Every visible area outside the bracelet and pendant must remain mathematically uniform pure white.
-- No off-white, ivory, cream, gray, color cast, gradient, vignette, horizon line, studio sweep, floor, glow, reflection, shadow, haze, bloom, or background texture.
+- Every pixel outside the bracelet and pendant must remain uniform #FFFFFF.
+- No off-white, gray, cream, color cast, gradient, vignette, horizon, floor, studio sweep, glow, reflection, haze, bloom, or background texture.
 
 IMAGE CLEANLINESS — ABSOLUTE REQUIREMENT:
 - Zero film grain, photographic grain, digital noise, sensor noise, texture overlay, dust, speckles, scratches, mottling, compression artifacts, vintage treatment, analog treatment, cinematic grain, or editorial grain.
 - Only intentional natural inclusions inside the gemstone may be visible.
-- Ultra-clean commercial e-commerce jewelry packshot isolated on #FFFFFF.
+- Ultra-clean e-commerce jewelry packshot.
 
-FINAL VALIDATION:
-Overlay the output mentally on Reference image 1. The bracelet outline, bead count, bead size, bead positions, pendant, crop, and scale must align exactly.
-If anything except the gemstone material changes, the result is incorrect and must be regenerated.
+FINAL PIXEL-ALIGNMENT TEST:
+Before output, mentally place the result directly over Reference image 1 at 50% opacity.
+All bead edges, bead centers, contact points, strand contours, pendant edges, jump ring, crop, margins, and overall silhouette must overlap exactly.
+The only visible difference should be the gemstone material inside the pre-existing bead boundaries.
+If any bead becomes visibly larger or smaller, if the bead count changes, if the ellipse changes, or if any object shifts, reject that result and redo the edit without changing geometry.
 
-한국어 핵심 지시:
-1번 사진의 구도·비즈 개수·비즈 크기·배열·타원 비율·크롭·펜던트 위치를 전부 그대로 고정하고, 2번 사진의 원석 재질만 기존 비즈 안에 입혀줘. 새 팔찌를 다시 만들지 말고 반드시 '재질만 교체'해. 원석 외에는 단 하나도 바꾸지 마.</textarea>
+한국어 최종 명령:
+1번 사진은 완성된 원본이므로 팔찌를 새로 그리지 마. 1번 사진의 각 비즈 외곽선을 마스크처럼 그대로 잠그고 그 내부 픽셀에만 2번 사진의 원석 색·투명도·내포물·광택을 입혀. 2번 사진의 비즈 크기·형태·배열·확대비는 전부 무시해. 비즈 개수, 각 비즈의 픽셀 크기, 중심 위치, 접점, 타원 비율, 팔찌 전체 크기, 여백, 크롭, 펜던트와 오링은 1번과 단 1픽셀도 다르게 바꾸지 마. 원석 재질 외에는 아무것도 수정하지 마.</textarea>
 <button class="copy-btn" data-copy-target="productCommon" data-copy-type="product" type="button">📋 전체 복사</button>
 </div><div class="jump-actions"><a class="alt" href="#product">↑ 단계 안내로 돌아가기</a></div>
 <div class="tip"><b>불투명 원석</b>은 아래 추가 문장도 함께 붙여넣으세요.</div>
